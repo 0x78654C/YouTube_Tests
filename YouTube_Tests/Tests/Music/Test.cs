@@ -1,7 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using YouTube_Tests.Src.Music;
 
-namespace YouTube_Tests
+namespace YouTube_Tests.Tests.Music
 {
     public class Test
     {
@@ -9,7 +10,7 @@ namespace YouTube_Tests
         private HomePage? _page;
         private SearchMusic? _searchMusic;
         private CreatePlayList? _createPlayList;
-        private FinalPage?   _finalPage;
+        private FinalPage? _finalPage;
         string url = "https://www.youtube.com";
 
         [SetUp]
@@ -25,13 +26,13 @@ namespace YouTube_Tests
         {
             _page = new HomePage(_driver);
             _page.AcceptCookies();
-           
+
             _searchMusic = new SearchMusic(_driver);
             _searchMusic.Search("Nature Music");
-            
+
             _createPlayList = new CreatePlayList(_driver);
             _createPlayList.ScrollDown();
-            
+
             string playList = _createPlayList.SearchResults("Nature");
             _finalPage = new FinalPage(_driver);
             _finalPage.PlayListPlay(playList);

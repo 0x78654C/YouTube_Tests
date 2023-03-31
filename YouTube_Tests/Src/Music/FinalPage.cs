@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 
-namespace YouTube_Tests
+namespace YouTube_Tests.Src.Music
 {
     public class FinalPage
     {
@@ -15,7 +15,7 @@ namespace YouTube_Tests
         private IWebElement? _playPlayList;
         public FinalPage(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             PageFactory.InitElements(driver, this);
         }

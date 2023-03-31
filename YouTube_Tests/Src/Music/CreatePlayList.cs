@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 
-namespace YouTube_Tests
+namespace YouTube_Tests.Src.Music
 {
     public class CreatePlayList
     {
@@ -15,7 +15,7 @@ namespace YouTube_Tests
         private IJavaScriptExecutor? js;
         public CreatePlayList(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             PageFactory.InitElements(driver, this);
         }
@@ -37,9 +37,9 @@ namespace YouTube_Tests
 
         public string SearchResults(string data)
         {
-            _searchResults= _wait.Until(w=> w.FindElements(By.XPath($"//a[contains(@title, '{data}')][contains(@href, '/watch?')]")));
+            _searchResults = _wait.Until(w => w.FindElements(By.XPath($"//a[contains(@title, '{data}')][contains(@href, '/watch?')]")));
             List<string> videoUrls = new List<string>();
-            foreach(IWebElement searchResult in _searchResults.Take(30))
+            foreach (IWebElement searchResult in _searchResults.Take(30))
                 videoUrls.Add(searchResult.GetAttribute("href").Split('=')[1]);
             return "https://www.youtube.com/watch_videos?video_ids=" + string.Join(",", videoUrls);
         }

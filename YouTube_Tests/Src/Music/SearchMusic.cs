@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
-namespace YouTube_Tests
+namespace YouTube_Tests.Src.Music
 {
     public class SearchMusic
     {
@@ -15,7 +15,7 @@ namespace YouTube_Tests
 
         public SearchMusic(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
             PageFactory.InitElements(driver, this);
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
