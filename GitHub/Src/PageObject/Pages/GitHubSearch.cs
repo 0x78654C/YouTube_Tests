@@ -29,6 +29,10 @@ namespace GitHub.Src.PageObject.Pages
             _search.SendKeys(Keys.Enter);
         }
 
+        public void GoToPage(IWebDriver driver, string url, string pageNumber) => driver.Navigate().GoToUrl(url);
+   
+
+        public string GetLastUrl() => _driver.Url;
         public string PagesSeachCount() => _pagesSeachCount.Text;
     }
 }

@@ -26,6 +26,20 @@ namespace GitHub.Test.Scripts
         {
             _driver.Navigate().GoToUrl(_global._gitHub);
             _gitHubSearch.Search(_global._searchData);
+            _driver.Quit();
+        }
+
+        
+        [Test]
+        public void SearchedPagesCount()
+        {
+            _driver.Navigate().GoToUrl(_global._gitHub);
+            _gitHubSearch.Search(_global._searchData);
+            var lastUrl = _gitHubSearch.GetLastUrl();
+            TestContext.WriteLine(lastUrl);
+            var pagesSearchedCount = _gitHubSearch.PagesSeachCount();
+            TestContext.WriteLine(pagesSearchedCount);
+            //_driver.Quit();
         }
     }
 }
