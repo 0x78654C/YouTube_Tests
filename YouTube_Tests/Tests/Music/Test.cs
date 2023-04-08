@@ -11,6 +11,7 @@ namespace YouTube_Tests.Tests.Music
         private SearchMusic? _searchMusic;
         private CreatePlayList? _createPlayList;
         private FinalPage? _finalPage;
+        private IFrame? _iframes;
         string url = "https://www.youtube.com";
 
         [SetUp]
@@ -36,6 +37,27 @@ namespace YouTube_Tests.Tests.Music
             string playList = _createPlayList.SearchResults("Nature");
             _finalPage = new FinalPage(_driver);
             _finalPage.PlayListPlay(playList);
+        }
+
+        [Test]
+        public void CountIframes()
+        {
+            _page = new HomePage(_driver);
+            _page.AcceptCookies();
+
+            _iframes = new IFrame(_driver);
+           var counts = _iframes.CountIFrames(_driver);
+            TestContext.WriteLine(counts);
+        }
+
+        [Test]
+        public void SwitchIframes()
+        {
+            _page = new HomePage(_driver);
+            _page.AcceptCookies();
+
+            _iframes = new IFrame(_driver);
+            _iframes.SwitchIframes(_driver);
         }
     }
 }
