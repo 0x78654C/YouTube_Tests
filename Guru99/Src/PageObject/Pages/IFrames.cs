@@ -14,11 +14,18 @@ namespace Guru99.Src.PageObject.Pages
         private IWebDriver _driver;
         private WebDriverWait? _wait;
 
-        [FindsBy(How = How.ClassName, Using = "mat-raised-button")]
+        [FindsBy(How = How.TagName, Using = "iframe")]
         private IList<IWebElement> _iframes;
 
-        [FindsBy(How = How.Id, Using = "save")]
+        [FindsBy(How = How.XPath, Using = "//*[contains(@class, 'mat-focus-indicator solo-button mat-button mat-button-base mat-raised-button')]")]
         private IWebElement? _acceptButton;
+
+        [FindsBy(How = How.XPath, Using = "//iframe[contains(@id, 'a077aa5e')]")]
+        private IWebElement? _demoV1;
+
+
+        [FindsBy(How = How.XPath, Using = "html/body/a/img")]
+        private IWebElement? _frameClick;
 
 
         public IFrames(IWebDriver driver, string url)
@@ -31,8 +38,17 @@ namespace Guru99.Src.PageObject.Pages
 
         public void AcceptCookies(IWebDriver driver)
         {
-            _acceptButton.Click();
-            Task.Delay(500).Wait();
+            _acceptButton.SendKeys("Enter");
+        }
+
+        public void EnterV1(IWebDriver driver)
+        {
+            //Task.Delay(100).Wait();
+            //_driver.SwitchTo().ParentFrame();
+            //_driver.SwitchTo().Frame("a077aa5e");
+            var iframe = _driver.FindElement(By.XPath("//*[@href='http://www.guru99.com/live-selenium-project.html']"));
+            Task.Delay(100).Wait();
+            iframe.Click();
         }
 
         /// <summary>
@@ -50,9 +66,22 @@ namespace Guru99.Src.PageObject.Pages
         public List<string> ListFrames(IWebDriver driver)
         {
             var list = new List<string>();
-            foreach (var iframe in _iframes)
-                list.Add(iframe.Text);
+            var countiFrames = _iframes.Count();
+            for (int i = 0; i < countiFrames; i++)
+            {
+                _driver.SwitchTo().ParentFrame();
+                _driver.SwitchTo().Frame(i);
+                list.Add(GetElementName());
+            }
             return list;
+        }
+
+
+        private string GetElementName()
+        {
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)_driver;
+            var name = javaScriptExecutor.ExecuteScript("return self.name");
+            return name.ToString();
         }
     }
 }

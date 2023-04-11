@@ -27,6 +27,14 @@ namespace Guru99.Test.Script
         [Test]
         public void AcceptCookies() => _iframes.AcceptCookies(_driver);
 
+        [Test]
+        public void EnterV1()
+        {
+            _iframes.EnterV1(_driver);
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)_driver;
+            var name = javaScriptExecutor.ExecuteScript("return self.name");
+            TestContext.WriteLine(name);   
+        }
 
         [Test]
         public void CountIframes()

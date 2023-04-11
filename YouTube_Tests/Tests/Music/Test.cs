@@ -49,15 +49,5 @@ namespace YouTube_Tests.Tests.Music
            var counts = _iframes.CountIFrames(_driver);
             TestContext.WriteLine(counts);
         }
-
-        [Test]
-        public void SwitchIframes()
-        {
-            _page = new HomePage(_driver);
-            _page.AcceptCookies();
-
-            _iframes = new IFrame(_driver);
-            _iframes.SwitchIframes(_driver);
-        }
     }
 }
