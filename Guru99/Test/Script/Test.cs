@@ -53,5 +53,12 @@ namespace Guru99.Test.Script
                 TestContext.WriteLine(frame);
             }
         }
+
+        [Test]
+        public void FrameExist()
+        {
+            var frameExist = _iframes.FrameId(_driver);
+            Assert.True(frameExist);
+        }
     }
 }

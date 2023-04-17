@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework.Internal.Execution;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
@@ -17,7 +18,7 @@ namespace Guru99.Src.PageObject.Pages
         [FindsBy(How = How.TagName, Using = "iframe")]
         private IList<IWebElement> _iframes;
 
-        [FindsBy(How = How.XPath, Using = "//*[contains(@class, 'mat-focus-indicator solo-button mat-button mat-button-base mat-raised-button')]")]
+        [FindsBy(How = How.XPath, Using = "//button[@id='save']")]
         private IWebElement? _acceptButton;
 
         [FindsBy(How = How.XPath, Using = "//iframe[contains(@id, 'a077aa5e')]")]
@@ -38,16 +39,19 @@ namespace Guru99.Src.PageObject.Pages
 
         public void AcceptCookies(IWebDriver driver)
         {
-            _acceptButton.SendKeys("Enter");
+            var iframeSwitch = driver.FindElement(By.Id("gdpr-consent-notice"));
+            Console.WriteLine("Swtiching..");
+            driver.SwitchTo().Frame(iframeSwitch);
+            Console.WriteLine("Switched");
+            driver.FindElement(By.Id("save")).Click();
         }
 
         public void EnterV1(IWebDriver driver)
         {
-            //Task.Delay(100).Wait();
-            //_driver.SwitchTo().ParentFrame();
-            //_driver.SwitchTo().Frame("a077aa5e");
+            AcceptCookies(driver);
+            _driver.SwitchTo().ParentFrame();
+            _driver.SwitchTo().Frame("a077aa5e");
             var iframe = _driver.FindElement(By.XPath("//*[@href='http://www.guru99.com/live-selenium-project.html']"));
-            Task.Delay(100).Wait();
             iframe.Click();
         }
 
@@ -74,6 +78,17 @@ namespace Guru99.Src.PageObject.Pages
                 list.Add(GetElementName());
             }
             return list;
+        }
+
+
+        /// <summary>
+        /// List all frames.
+        /// </summary>
+        /// <param name="driver"></param>
+        public bool FrameId(IWebDriver driver)
+        {
+            var frameName = driver.FindElement(By.Id("gdpr-consent-notice"));
+            return frameName != null;
         }
 
 
