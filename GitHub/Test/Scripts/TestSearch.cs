@@ -24,8 +24,8 @@ namespace GitHub.Test.Scripts
         [Test]
         public void Search()
         {
-            _driver.Navigate().GoToUrl(_global._gitHub);
-            _gitHubSearch.Search(_global._searchData);
+            _driver.Navigate().GoToUrl(_global.gitHub);
+            _gitHubSearch.Search(_global.searchData);
             _driver.Quit();
         }
 
@@ -33,8 +33,8 @@ namespace GitHub.Test.Scripts
         [Test]
         public void SearchedPagesCount()
         {
-            _driver.Navigate().GoToUrl(_global._gitHub);
-            _gitHubSearch.Search(_global._searchData);
+            _driver.Navigate().GoToUrl(_global.gitHub);
+            _gitHubSearch.Search(_global.searchData);
             var lastUrl = _gitHubSearch.GetLastUrl();
             TestContext.WriteLine(lastUrl);
             var pagesSearchedCount = _gitHubSearch.PagesSeachCount();

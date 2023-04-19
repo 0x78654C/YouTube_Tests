@@ -1,8 +1,6 @@
 ﻿using Guru99.Src.PageObject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.PageObjects;
 
 namespace Guru99.Test.Script
 {

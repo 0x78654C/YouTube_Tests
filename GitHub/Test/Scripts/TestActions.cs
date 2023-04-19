@@ -24,7 +24,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void GetStarsXterminal()
         {
-            _driver.Navigate().GoToUrl(_global._xterminalUrl);
+            _driver.Navigate().GoToUrl(_global.xterminalUrl);
             var stars = _gitHubAction.Stars();
             TestContext.WriteLine(stars);
             Assert.IsNotNull(stars);
@@ -34,7 +34,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void GetStarsCiare()
         {
-            _driver.Navigate().GoToUrl(_global._ciareUrl);
+            _driver.Navigate().GoToUrl(_global.ciareUrl);
             var stars = _gitHubAction.Stars();
             TestContext.WriteLine(stars);
             _driver.Quit();
@@ -44,7 +44,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void RepoCountPublic()
         {
-            _driver.Navigate().GoToUrl(_global._gitHubUrl);
+            _driver.Navigate().GoToUrl(_global.gitHubUrl);
             var countRepos = _gitHubAction.RepoCount();
             TestContext.WriteLine(countRepos);
             Assert.IsNotNull(countRepos);
@@ -55,7 +55,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void Followers()
         {
-            _driver.Navigate().GoToUrl(_global._gitHubUrl);
+            _driver.Navigate().GoToUrl(_global.gitHubUrl);
             var followers = _gitHubAction.Followers();
             TestContext.WriteLine(followers);
             Assert.IsNotNull(followers);
@@ -65,7 +65,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void Following()
         {
-            _driver.Navigate().GoToUrl(_global._gitHubUrl);
+            _driver.Navigate().GoToUrl(_global.gitHubUrl);
             var following = _gitHubAction.Following();
             TestContext.WriteLine(following);
             Assert.IsNotNull(following);
@@ -75,7 +75,7 @@ namespace GitHub.Test.Scripts
         [Test]
         public void ListPublicRepos()
         {
-            _driver.Navigate().GoToUrl(_global._gitRepos);
+            _driver.Navigate().GoToUrl(_global.gitRepos);
             var listRepos = string.Join(Environment.NewLine, _gitHubAction.ListRepos());
             TestContext.WriteLine(listRepos);
             Assert.IsNotNull(listRepos);
