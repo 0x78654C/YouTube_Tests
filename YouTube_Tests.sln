@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Router", "Router\Router.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHub", "GitHub\GitHub.csproj", "{203EA94B-A821-489F-8589-F4F56B92D1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guru99", "Guru99\Guru99.csproj", "{6CD6E7E6-20E3-4F46-B31B-7735873F0E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guru99", "Guru99\Guru99.csproj", "{6CD6E7E6-20E3-4F46-B31B-7735873F0E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch", "Twitch\Twitch.csproj", "{A40451C3-CE21-467C-9534-58BB06231353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6CD6E7E6-20E3-4F46-B31B-7735873F0E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CD6E7E6-20E3-4F46-B31B-7735873F0E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CD6E7E6-20E3-4F46-B31B-7735873F0E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40451C3-CE21-467C-9534-58BB06231353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40451C3-CE21-467C-9534-58BB06231353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40451C3-CE21-467C-9534-58BB06231353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40451C3-CE21-467C-9534-58BB06231353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
