@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
-
+using SeleniumExtras.WaitHelpers;
 
 namespace Twitch.Src.PageObject.Pages
 {
@@ -13,6 +14,7 @@ namespace Twitch.Src.PageObject.Pages
     {
 
         private IWebDriver _driver;
+        private WebDriverWait? _wait;
         private string _search = "";
 
         [FindsBy(How = How.XPath, Using = "//button[@data-a-target ='consent-banner-accept']")]
@@ -63,7 +65,15 @@ namespace Twitch.Src.PageObject.Pages
             catch (NoSuchElementException) { }
         }
 
-        public void UserName(string userName) => _userName.SendKeys(userName);
+        public void UserName(string userName)
+        {
+
+            //_wait.Until(ExpectedConditions.ElementIsVisible(_userName)).Click();
+            _userName.SendKeys(userName);
+
+        }
+
+         
         public void Password(string password) => _password.SendKeys(password);
 
         public void LoginUser()
